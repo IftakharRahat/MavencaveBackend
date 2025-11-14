@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Integrated platform for courses and mock exams.",
   "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js"

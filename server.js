@@ -54,15 +54,24 @@ app.use('/api/v1/chat', chatRoutes);
 
 app.get('/', (req, res) => res.send('MAVENCAVE API is running'));
 
+// Health check endpoint for Render (before error handlers)
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', time: new Date().toISOString() });
+});
+
 // Custom error handler middleware
 app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-// When running on Vercel we export the app and let Vercel handle the HTTP server
+
+// Start server (for Render, Railway, Heroku, etc.)
+// On Vercel, this won't run as Vercel handles the server
 if (process.env.VERCEL !== '1') {
-  app.listen(PORT, () => console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running in ${process.env.NODE_ENV || 'production'} mode on port ${PORT}`);
+  });
 }
 
-// Export the Express app so it can be wrapped by a serverless handler (e.g. serverless-http)
+// Export the Express app (needed for Vercel serverless)
 module.exports = app;
