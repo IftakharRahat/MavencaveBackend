@@ -2,7 +2,7 @@ const http = require('http');
 const https = require('https');
 
 // Configuration
-const BASE_URL = process.env.API_URL || 'https://mavencave-backend.vercel.app';
+const BASE_URL = process.env.API_URL || 'https://mavencavebackend.onrender.com';
 const API_BASE = `${BASE_URL}/api/v1`;
 
 // Colors for console output

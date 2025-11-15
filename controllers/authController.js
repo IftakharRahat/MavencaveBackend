@@ -61,7 +61,7 @@ const loginUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id),
     });
   } else {
-    res.status(401).select('-password');
+    res.status(401);
     throw new Error('Invalid email or password');
   }
 });
@@ -76,3 +76,11 @@ const getMe = asyncHandler(async (req, res) => {
 
 
 module.exports = { registerUser, loginUser, getMe };
+
+
+
+
+
+
+
+git commit -m "Updated AuthController"

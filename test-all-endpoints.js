@@ -1,6 +1,6 @@
 const https = require('https');
 
-const BASE = 'https://mavencave-backend.vercel.app';
+const BASE = 'https://mavencavebackend.onrender.com';
 
 function test(path, method = 'GET') {
   return new Promise((resolve) => {
